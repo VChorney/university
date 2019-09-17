@@ -1,4 +1,4 @@
-package com.university.enums;
+package com.university.entity;
 
 public enum Role {
 	EMPLOYEE, HEAD

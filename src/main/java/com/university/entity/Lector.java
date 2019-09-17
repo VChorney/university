@@ -4,13 +4,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.CollectionTable;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,14 +17,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.university.enums.Degree;
-import com.university.enums.Role;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "lector")
+@Table(name = "Lector")
 public class Lector {
 
 	@Id
@@ -57,31 +51,17 @@ public class Lector {
 	@Setter
 	Double salary;
 
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "department_lectors",
 			joinColumns = {@JoinColumn(name = "lector_id")},
 			inverseJoinColumns = {@JoinColumn(name = "department_id")})
 	@Getter
 	@Setter
-	private Set<Department> department = new HashSet<>();
+	private Set<Department> departments = new HashSet<>();
 
 	@Enumerated(EnumType.STRING)
 	@Getter
 	@Setter
 	private Role role;
 
-	public Lector() {
-	}
-
-	@Override
-	public String toString() {
-		return "Lector{" +
-				"id=" + id +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", degrees=" + degree +
-				", department=" + department +
-				", role=" + role +
-				'}';
-	}
 }

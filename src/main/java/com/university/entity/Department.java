@@ -12,7 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "department")
+@Table(name = "Department")
 public class Department {
 
 	@Id
@@ -26,15 +26,4 @@ public class Department {
 	@Getter
 	@Setter
 	private String name;
-
-	public Department() {
-	}
-
-	@Override
-	public String toString() {
-		return "Department{" +
-				"id=" + id +
-				", name='" + name + '\'' +
-				'}';
-	}
 }
