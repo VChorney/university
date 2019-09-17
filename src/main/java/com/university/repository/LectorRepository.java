@@ -14,17 +14,17 @@ import com.university.entity.Role;
 @Repository
 public interface LectorRepository extends CrudRepository<Lector, Long> {
 
-	@Query("SELECT l FROM Lector l join l.departments department WHERE department.name = :departmentName and l.role=:role")
+	@Query("SELECT lector FROM Lector lector join lector.departments department WHERE department.name = :departmentName and lector.role=:role")
 	Lector findByRolesAAndDepartment(@Param("role") Role role, @Param("departmentName") String departmentName);
 
-	@Query("SELECT AVG (l.salary) FROM Lector l join l.departments department WHERE department.name = :departmentName")
+	@Query("SELECT AVG (lector.salary) FROM Lector lector join lector.departments department WHERE department.name = :departmentName")
 	Double averageSalaryForDepartment(@Param("departmentName") String departmentName);
 
-	@Query("SELECT COUNT(l.id) FROM Lector l join l.departments department WHERE department.name = :departmentName and l.role=:role")
+	@Query("SELECT COUNT(lector.id) FROM Lector lector join lector.departments department WHERE department.name = :departmentName and lector.role=:role")
 	Integer countByRoleAndDepartment(@Param("role") Role role, @Param("departmentName") String departmentName);
 
 	List<Lector> findAllByFirstNameLikeOrLastNameLike(String first, String last);
 
-	@Query("SELECT COUNT(l.id) FROM Lector l join l.departments department WHERE department.name = :departmentName and l.degree=:degree")
-	Integer countByDegreeAndDepartmen(@Param("departmentName") String departmentName, @Param("degree") Degree degree);
+	@Query("SELECT COUNT(lector.id) FROM Lector lector join lector.departments department WHERE department.name = :departmentName and lector.degree=:degree")
+	Integer countByDegreeAndDepartment(@Param("departmentName") String departmentName, @Param("degree") Degree degree);
 }

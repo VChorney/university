@@ -25,7 +25,7 @@ public class LectorService implements BaseService<Lector> {
 	}
 
 	public Integer countByDegreeInDepartment(String departmentName, Degree degree) {
-		return lectorRepository.countByDegreeAndDepartmen(departmentName,degree);
+		return lectorRepository.countByDegreeAndDepartment(departmentName,degree);
 	}
 
 	public Double showAverageSalaryOfDepartment(String departmentName) {

@@ -78,7 +78,7 @@ public class Application implements CommandLineRunner {
 	}
 
 	private String inputRequest(InputStreamReader inputStreamReader) {
-		try(BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+		try{BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 			return bufferedReader.readLine();
 		} catch(IOException e) {
 			e.printStackTrace();
